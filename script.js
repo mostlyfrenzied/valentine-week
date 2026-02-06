@@ -1,7 +1,7 @@
-// Add to script.js
-const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
 
+// "No" button logic
 noBtn.addEventListener('mouseover', () => {
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
@@ -10,46 +10,35 @@ noBtn.addEventListener('mouseover', () => {
     noBtn.style.top = y + 'px';
 });
 
+// "Yes" button logic
 yesBtn.addEventListener('click', () => {
     document.getElementById('question-section').classList.add('hidden');
     document.getElementById('success-section').classList.remove('hidden');
     
+    // Bloom the bouquet
     setTimeout(() => {
         document.getElementById('bouquet').classList.add('bloom');
     }, 200);
 
-    // Launch celebratory hearts
-    for (let i = 0; i < 40; i++) {
-        createHeart();
-    }
+    // Start the Rose Petal Rain
+    setInterval(createPetal, 300);
 });
 
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.innerHTML = '❤️';
-    heart.className = 'floating-heart';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
+function createPetal() {
+    const petal = document.createElement('div');
+    // Randomly pick between different rose-themed icons
+    const items = ['🌹', '🌷', '🌸', '✨'];
+    petal.innerHTML = items[Math.floor(Math.random() * items.length)];
+    
+    petal.className = 'petal';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    petal.style.opacity = Math.random();
+    
+    document.body.appendChild(petal);
+    
+    // Remove petal after animation
+    setTimeout(() => {
+        petal.remove();
+    }, 6000);
 }
-
-// Add heart animation to the page
-const styleSheet = document.createElement("style");
-styleSheet.innerText = `
-    .floating-heart {
-        position: fixed;
-        bottom: -10vh;
-        user-select: none;
-        pointer-events: none;
-        animation: flyUp linear forwards;
-    }
-    @keyframes flyUp {
-        to {
-            transform: translateY(-110vh) rotate(360deg);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(styleSheet);
