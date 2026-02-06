@@ -93,3 +93,38 @@ body {
 .hidden {
     display: none;
 }
+/* Rose Day specific colors */
+.rose-title {
+    color: #e91e63;
+    font-family: 'Georgia', serif;
+    font-size: 2.2rem;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInContent 2s ease-in forwards;
+    animation-delay: 1s; /* Shows up after the bouquet blooms */
+}
+
+@keyframes fadeInContent {
+    to { opacity: 1; }
+}
+
+/* Falling Rose Petals style */
+.petal {
+    position: fixed;
+    top: -10%;
+    user-select: none;
+    pointer-events: none;
+    z-index: 100;
+    font-size: 1.5rem;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) translateX(100px) rotate(360deg);
+    }
+}
