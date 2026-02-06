@@ -49,5 +49,47 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+}
 
-/* ... keep the rest of your button styles from before ... */
+#yesBtn, #noBtn {
+    padding: 15px 35px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Vibrant Green for 'Yes' - implies growth and positivity */
+#yesBtn {
+    background-color: #4caf50;
+    color: white;
+}
+
+#yesBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Soft Crimson/Red for 'No' */
+#noBtn {
+    background-color: #ef5350;
+    color: white;
+}
+
+#noBtn:hover {
+    background-color: #e53935;
+    transform: scale(0.95); /* Shrinks slightly, making it less "clickable" */
+}
+
+.hidden {
+    display: none;
+}
